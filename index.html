@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobby Junction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">MIRAAKI</h1>
+      <nav>
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="menucard">
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#stats" class="nav-link">Stats</a></li>
+          <li><a href="community.html" class="nav-link">Community</a></li>
+          <li><a href="login.html" class="btn-primary">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <section class="hero">
+    <div class="container">
+      <h2 class="hero-title">Turn Your Passion into Pocket Money</h2>
+      <p class="hero-subtitle">Join a vibrant community where hobbyists can sell their creations, teach their skills, and connect with like-minded people.</p>
+      <a href="marketplace.html" class="btn-secondary marketplace-btn">Explore Marketplace</a>
+    </div>
+  </section>
+
+  <section id="stats" class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>10+ Members</h3>
+          <p>Be Among the First Creators to Monetize Your Passion</p>
+        </div>
+        <div class="stat-card">
+          <h3>10+ Experts</h3>
+          <p>First 20 Course Creators Get Exclusive Content..!</p>
+        </div>
+        <div class="stat-card">
+          <h3>100% Trust</h3>
+          <p>Almost 100% users recommended to  their Friends...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title animate-title">Why Choose MIRAAKI ?</h2>
+      <div class="feature-cards">
+        <div class="card">
+            <h3>Monetize Your Skills</h3>
+            <p>Sell your crafts, collections, or expertise with ease.</p>
+          </div>
+          <div class="card">
+            <h3>Learn & Teach</h3>
+            <p>Discover new hobbies or share your knowledge through courses.</p>
+          </div>
+          <div class="card">
+            <h3>Connect with Community</h3>
+            <p>Meet people who share your interests and build lasting friendships.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="courses" class="courses">
+    <div class="container">
+      <h2 class="section-title animate-title">Featured Courses</h2>
+      <div class="course-grid">
+        <!-- Course Card 1 -->
+        <!-- <div class="course-card">
+          <div class="course-thumbnail">
+            <img src="images.jpeg" alt="Pottery Course">
+            <div class="overlay"></div>
+          </div>
+          <h3 class="course-title">Beginner's Pottery Workshop</h3>
+          <p class="course-desc">Master the basics of clay modeling</p>
+          <a href="#" class="btn-primary course-btn">
+            Enroll Now <i class="fas fa-arrow-right"></i>
+          </a>
+        </div> -->
+        <div class="course-card">
+          <div class="course-thumbnail">
+              <img src="painting.jpg" alt="Pottery Course">
+              <div class="overlay"></div>
+          </div>
+          <h3 class="course-title">Beginner's Pottery Workshop</h3>
+          <p class="course-desc">Master the basics of clay modeling</p>
+          <button class="btn-primary course-btn" onclick="openVideo()"> 
+              Watch Now <i class="fas fa-arrow-right"></i>
+          </button>
+      </div>
+
+      <!-- Video Popup Modal -->
+      <div id="videoModal" class="modal">
+          <div class="modal-content">
+              <span class="close" onclick="closeVideo()">&times;</span>
+              <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+      </div>
+        
+        <!-- Course Card 2 -->
+        <div class="course-card">
+          <div class="course-thumbnail">
+              <img src="strings of passion.jpg" alt="Pottery Course">
+              <div class="overlay"></div>
+          </div>
+          <h3 class="course-title">Strings of Passion</h3>
+          <p class="course-desc">"Feel the magic as every note resonates with raw emotion and deep passion.!"</p>
+          <button class="btn-primary course-btn" onclick="openVideo()"> 
+              Watch Now <i class="fas fa-arrow-right"></i>
+          </button>
+      </div>
+  
+      <!-- Video Popup Modal -->
+      <div id="videoModal" class="modal">
+          <div class="modal-content">
+              <span class="close" onclick="closeVideo()">&times;</span>
+              <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+      </div>
+  
+        <!-- Course Card 3 -->
+        <div class="course-card">
+          <div class="course-thumbnail">
+              <img src="images.jpeg" alt="Pottery Course">
+              <div class="overlay"></div>
+          </div>
+          <h3 class="course-title">Beginner's Pottery Workshop</h3>
+          <p class="course-desc">Master the basics of clay modeling</p>
+          <button class="btn-primary course-btn" onclick="openVideo()"> 
+              Watch Now <i class="fas fa-arrow-right"></i>
+          </button>
+      </div>
+  
+      <!-- Video Popup Modal -->
+      <div id="videoModal" class="modal">
+          <div class="modal-content">
+              <span class="close" onclick="closeVideo()">&times;</span>
+              <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Updated!</h2>
+        <p>Subscribe to our newsletter for latest updates and offers</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email">
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section> -->
+  <section class="newsletter">
+    <div class="container">
+      <!-- Newsletter Form -->
+      <div class="form-container">
+        <h2 class="section-title">Stay Updated!</h2>
+        <p class="section-subtitle">Subscribe to our newsletter for latest updates and offers</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+      </div>
+  
+      <!-- Feedback Form -->
+      <div class="form-container">
+        <h2 class="section-title">Your Feedback</h2>
+        <p class="section-subtitle">We value your opinions and suggestions</p>
+        <form class="newsletter-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="4" required></textarea>
+          <button type="submit" class="btn-primary">Send Feedback</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="marketplace.html">Marketplace</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+              <li>Email: info@miraaki.com</li>
+              <li>Phone: +91 7667027568</li>
+              <li>Address: CMR UNIVERSITY</li>
+          </ul>
+      </div>
+
+      <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+              <a href="https://www.instagram.com/lets_miraaki?igsh=MW1hbWpzbzN4cHE1Yw=="><i class="fab fa-instagram"></i></a>
+              <a href="https://youtube.com/@clipz98?si=Z861JcIz05yEXO9E"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+      </div>
+    </div>
+    <div class="container">
+      <p>&copy; 2025 MIRAAKI. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+      <!-- Video Modal (Add this at BOTTOM of body) -->
+  <!-- <div class="video-modal" id="videoModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <iframe id="courseVideo" width="100%" height="400" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+  </div> -->
+</body>
+
+</html>

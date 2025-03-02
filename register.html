@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Hobby Junction</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+          <h1 class="logo">Hobby Junction</h1>
+          <nav>
+            <div class="hamburger" id="hamburger">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+            <ul class="nav-links" id="menucard">
+              <li><a href="about.html" class="nav-link">About Us</a></li>
+              <li><a href="#features" class="nav-link">Features</a></li>
+              <li><a href="#stats" class="nav-link">Stats</a></li>
+              <li><a href="community.html" class="nav-link">Community</a></li>
+              <li><a href="login.html" class="btn-primary">Login</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+    <!-- Registration Form -->
+    <div class="form-container slide-up">
+        <h2 class="form-title">Create Account</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <input type="text" id="fullName" required>
+                <label for="fullName">Full Name</label>
+            </div>
+            
+            <div class="form-group">
+                <input type="email" id="email" required>
+                <label for="email">Email Address</label>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="confirmPassword" required>
+                <label for="confirmPassword">Confirm Password</label>
+            </div>
+
+            <button type="submit" class="form-btn hover-scale">Register Now</button>
+        </form>
+        <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>
