@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Miraaki</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        </div>
+        <div class="nav-links">
+            <button id="logoutBtn" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <header class="profile-header">
+        <div class="profile-banner"></div>
+        <div class="profile-avatar-container">
+            <div class="avatar-wrapper">
+                <img id="profileAvatar" src="https://ui-avatars.com/api/?name=User+Name&background=e91e63&color=fff" alt="Profile Picture">
+                <label for="avatarUpload" class="avatar-edit-btn">
+                    <i class="fas fa-camera"></i>
+                    <input type="file" id="avatarUpload" accept="image/*">
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-content">
+        <!-- Dashboard Switcher -->
+        <section class="profile-section">
+            <h2><i class="fas fa-columns"></i> Dashboard</h2>
+            <div class="dashboard-switcher">
+                <select id="dashboardSwitch" class="role-switch">
+                    <option value="buyer">Buyer Dashboard</option>
+                    <option value="seller">Seller Dashboard</option>
+                    <option value="content_creator">Content Creator Dashboard</option>
+                </select>
+                <button id="goToDashboardBtn" class="btn btn-primary">
+                    <i class="fas fa-external-link-alt"></i> Go to Dashboard
+                </button>
+            </div>
+        </section>
+
+        <!-- Personal Info Section -->
+        <section class="profile-section">
+            <div class="section-header">
+                <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+                <button id="editProfileBtn" class="btn btn-outline"><i class="fas fa-edit"></i> Edit Profile</button>
+            </div>
+            
+            <div class="profile-details">
+                <div class="detail-row">
+                    <span class="detail-label">Full Name</span>
+                    <span id="fullName" class="detail-value">Alex Johnson</span>
+                    <input type="text" id="fullNameInput" class="detail-input" style="display: none;">
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email</span>
+                    <span id="email" class="detail-value">alex.johnson@example.com</span>
+                    <input type="email" id="emailInput" class="detail-input" style="display: none;">
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Joined Date</span>
+                    <span class="detail-value">June 15, 2023</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Bio</span>
+                    <span id="bio" class="detail-value">Digital creator and tech enthusiast. Love to share my creations with the world!</span>
+                    <textarea id="bioInput" class="detail-input" style="display: none;"></textarea>
+                </div>
+                <!-- Password Field -->
+                <div class="detail-row">
+                    <span class="detail-label">Password</span>
+                    <span id="passwordDisplay" class="detail-value">••••••••</span>
+                    <div class="password-input-wrapper" style="display: none;">
+                        <input type="password" id="passwordInput" class="detail-input" placeholder="Enter new password">
+                        <button class="toggle-password" type="button">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="saveProfileBtn" class="btn btn-primary" style="display: none;">
+                <i class="fas fa-save"></i> Save Changes
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <p>&copy; 2023 Miraaki. All rights reserved.</p>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miraaki - Register</title>
+    <style>
+        :root {
+            --primary: #2A4D69;
+            --secondary: #4B86B4;
+            --accent: #F4A261;
+            --bg: #F5F7FA;
+            --text: #1A2A44;
+            --error: #D9534F;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--bg), #E8ECEF);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .register-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 16px 16px 0 0;
+        }
+        h1 {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+            flex: 1;
+        }
+        label {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 5px rgba(244, 162, 97, 0.3);
+        }
+        .toggle-options {
+            display: flex;
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 20px;
+        }
+        .toggle-option {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .toggle-option.active {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .captcha-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .captcha-code {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            letter-spacing: 3px;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 10px;
+            flex: 1;
+            text-align: center;
+            user-select: none;
+        }
+        .refresh-captcha {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--secondary);
+            font-size: 18px;
+        }
+        .register-btn {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 77, 105, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Create Your Account</h1>
+        <p class="tagline">Join Miraaki to explore hobbies!</p>
+        <form id="registerForm">
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="input-group">
+                <label>You’re here to</label>
+                <div class="toggle-options">
+                    <div class="toggle-option active" data-value="buy">Buy</div>
+                    <div class="toggle-option" data-value="sell">Sell</div>
+                    <div class="toggle-option" data-value="create">Create</div>
+                </div>
+                <input type="hidden" id="purpose" name="purpose" value="buy">
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label>Captcha Verification</label>
+                <div class="captcha-container">
+                    <div class="captcha-code" id="captchaText">A7B9C2</div>
+                    <button type="button" class="refresh-captcha" onclick="generateCaptcha()">↻</button>
+                </div>
+                <input type="text" id="captchaInput" placeholder="Enter captcha code" required>
+            </div>
+            <button type="submit" class="register-btn">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('.toggle-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.toggle-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('purpose').value = this.dataset.value;
+            });
+        });
+
+        function generateCaptcha() {
+            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('captchaText').textContent = captcha;
+        }
+        generateCaptcha();
+
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const captchaInput = document.getElementById('captchaInput').value;
+            const captchaText = document.getElementById('captchaText').textContent;
+            if (captchaInput !== captchaText) {
+                alert('Invalid CAPTCHA');
+                return;
+            }
+            // Add registration logic here
+            console.log('Registration submitted');
+        });
+    </script>
+</body>
+</html>

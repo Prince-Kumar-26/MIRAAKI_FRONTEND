@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard | Miraaki</title>
+    <link rel="stylesheet" href="buyer-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <button class="hamburger"><i class="fas fa-bars"></i></button>
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="brand">Miraaki</div>
+              </a>
+              
+        </div>
+        <div class="profile-info">
+            <img src="https://ui-avatars.com/api/?name=Buyer+Name&background=008080&color=fff" alt="Profile" class="profile-photo">
+            <span class="profile-name">Buyer Name</span>
+            <span class="profile-badge">Buyer</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> <span>BUY</span></a></li>
+            <li><a href="#" class="nav-link" data-section="products"><i class="fas fa-shopping-bag"></i> <span>Products</span></a></li>
+            <li><a href="#" class="nav-link" data-section="orders"><i class="fas fa-receipt"></i> <span>Orders</span></a></li>
+            <li><a href="#" class="nav-link" data-section="wishlist"><i class="fas fa-heart"></i> <span>Wishlist</span></a></li>
+            <li><a href="#" class="nav-link" data-section="settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" class="nav-link" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+        <div class="dashboard-header">
+            <div class="header-left">
+                <h1>Buyer Dashboard</h1>
+                <div class="breadcrumb">Home</div>
+            </div>
+            <div class="header-right">
+                <div class="user-actions">
+                    <button class="btn-notification"><i class="fas fa-bell"></i></button>
+                    <select id="roleSwitch" class="filter-select">
+                        <option value="buyer" selected>Buyer</option>
+                        <option value="seller">Seller</option>
+                        <option value="content_creator">Content Creator</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="welcome-card">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span>Buyer</span>!</h2>
+                        <p>Discover amazing products and manage your orders all in one place.</p>
+                        <div class="welcome-actions">
+                            <button class="btn-primary" data-section="products"><i class="fas fa-shopping-bag"></i> Browse Products</button>
+                            <button class="btn-secondary" data-section="orders"><i class="fas fa-receipt"></i> View Orders</button>
+                        </div>
+                    </div>
+                    <div class="welcome-animation">
+                        <div class="video-container">
+                        <video autoplay muted loop>
+                            <source src="/images/welcome.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video></div>
+                          
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_5tkzkblw.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalOrders">0</h3>
+                            <p>Total Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_m9qfkdfy.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalSpent">$0.00</h3>
+                            <p>Total Spent</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_80n1m4wd.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="wishlistItems">0</h3>
+                            <p>Wishlist Items</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shopping-bag"></i> Products</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search products...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <select class="filter-select">
+                            <option>All Categories</option>
+                            <option>Electronics</option>
+                            <option>Clothing</option>
+                            <option>Home & Garden</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="productGrid" class="product-grid">
+                    <!-- Products will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-receipt"></i> Your Orders</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search orders...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <select class="filter-select">
+                            <option>All Status</option>
+                            <option>Delivered</option>
+                            <option>Shipped</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="orderList" class="order-list">
+                    <!-- Orders will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Wishlist Section -->
+            <section id="wishlist" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-heart"></i> Your Wishlist</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search wishlist...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="wishlistGrid" class="wishlist-grid">
+                    <!-- Wishlist items will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                </div>
+                <div class="settings-content">
+                    <p>Buyer account settings and preferences</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Product Quick View Modal -->
+    <div id="quickViewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modalProductContent">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="buyer-dashboard.js"></script>
+</body>
+</html>

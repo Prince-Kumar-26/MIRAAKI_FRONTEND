@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Creator Dashboard | Miraaki</title>
+    <link rel="stylesheet" href="content_creator-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <button class="hamburger"><i class="fas fa-bars"></i></button>
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="brand">Miraaki</div>
+              </a>
+              
+        </div>
+        <div class="profile-info">
+            <img src="https://ui-avatars.com/api/?name=Content+Creator&background=008080&color=fff" alt="Profile" class="profile-photo">
+            <span class="profile-name">Content Creator</span>
+            <span class="profile-badge">Creator</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> <span>Create</span></a></li>
+            <li><a href="#" class="nav-link" data-section="videos"><i class="fas fa-video"></i> <span>Videos</span></a></li>
+            <li><a href="#" class="nav-link" data-section="analytics"><i class="fas fa-chart-pie"></i> <span>Analytics</span></a></li>
+            <li><a href="#" class="nav-link" data-section="comments"><i class="fas fa-comments"></i> <span>Comments</span></a></li>
+            <li><a href="#" class="nav-link" data-section="settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" class="nav-link" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+        <div class="dashboard-header">
+            <div class="header-left">
+                <h1>Content Creator Studio</h1>
+                <div class="breadcrumb">Home</div>
+            </div>
+            <div class="header-right">
+                <div class="user-actions">
+                    <button class="btn-notification"><i class="fas fa-bell"></i></button>
+                    <select id="roleSwitch" class="filter-select">
+                        <option value="buyer">Buyer</option>
+                        <option value="seller">Seller</option>
+                        <option value="content_creator" selected>Content Creator</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="welcome-card">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span>Creator</span>!</h2>
+                        <p>Manage your content, analyze performance, and engage with your audience.</p>
+                        <div class="welcome-actions">
+                            <button class="btn-primary" data-section="videos"><i class="fas fa-video"></i> View Videos</button>
+                            <button class="btn-secondary" data-section="analytics"><i class="fas fa-chart-line"></i> View Analytics</button>
+                        </div>
+                    </div>
+                    <div class="welcome-animation">
+                        <video id="welcome-animation"autoplay muted loop>
+                            <source src="/images/content creation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                          
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_9wjm6qbr.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalViews">0</h3>
+                            <p>Total Views</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_obhph3sh.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalSubscribers">0</h3>
+                            <p>Subscribers</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_yo6gjprf.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="engagementRate">0%</h3>
+                            <p>Engagement Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Videos Section -->
+            <section id="videos" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-video"></i> Your Videos</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search videos..." id="videoSearch">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <button id="uploadVideoBtn" class="btn-primary"><i class="fas fa-plus"></i> Upload Video</button>
+                    </div>
+                </div>
+                <div id="videoGrid" class="video-grid">
+                    <!-- Videos will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-pie"></i> Performance Analytics</h2>
+                    <div class="section-actions">
+                        <select id="analyticsFilter" class="filter-select">
+                            <option value="7days">Last 7 Days</option>
+                            <option value="30days" selected>Last 30 Days</option>
+                            <option value="90days">Last 90 Days</option>
+                            <option value="all">All Time</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="analytics-grid">
+                    <div class="analytic-card">
+                        <div class="analytic-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_9wjm6qbr.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+                        </div>
+                        <h3>Total Views</h3>
+                        <p id="analyticsTotalViews">0</p>
+                        <div class="analytic-trend up"><i class="fas fa-arrow-up"></i> 12%</div>
+                    </div>
+                    <div class="analytic-card">
+                        <div class="analytic-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_obhph3sh.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+                        </div>
+                        <h3>Subscribers</h3>
+                        <p id="analyticsSubscribers">0</p>
+                        <div class="analytic-trend up"><i class="fas fa-arrow-up"></i> 5%</div>
+                    </div>
+                    <div class="analytic-card">
+                        <div class="analytic-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_yo6gjprf.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+                        </div>
+                        <h3>Engagement Rate</h3>
+                        <p id="analyticsEngagement">0%</p>
+                        <div class="analytic-trend down"><i class="fas fa-arrow-down"></i> 2%</div>
+                    </div>
+                    <div class="analytic-card">
+                        <div class="analytic-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_gnvsa7gh.json" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+                        </div>
+                        <h3>Watch Time</h3>
+                        <p id="analyticsWatchTime">0h</p>
+                        <div class="analytic-trend up"><i class="fas fa-arrow-up"></i> 18%</div>
+                    </div>
+                </div>
+                
+                <!-- Chart Placeholder -->
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Comments Section -->
+            <section id="comments" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-comments"></i> Recent Comments</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search comments..." id="commentSearch">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <button id="refreshComments" class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+                <div id="commentList" class="comment-list">
+                    <!-- Comments will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                </div>
+                <div class="settings-content">
+                    <p>Content creator account settings and preferences</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Upload Video Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-upload"></i> Upload New Video</h2>
+                <div class="upload-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-text">0%</span>
+                </div>
+            </div>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="videoTitle">Video Title</label>
+                    <input type="text" id="videoTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="videoDescription">Description</label>
+                    <textarea id="videoDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="videoThumbnail">Thumbnail Upload</label>
+                    <div class="file-upload">
+                        <label for="videoThumbnail" class="upload-label">
+                            <i class="fas fa-image"></i>
+                            <span>Choose thumbnail image</span>
+                        </label>
+                        <input type="file" id="videoThumbnail" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="videoFile">Video File</label>
+                    <div class="file-upload">
+                        <label for="videoFile" class="upload-label">
+                            <i class="fas fa-video"></i>
+                            <span>Choose video file</span>
+                        </label>
+                        <input type="file" id="videoFile" accept="video/*" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary close-modal-btn">Cancel</button>
+                    <button type="submit" class="btn-primary">Upload Video</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="notification">
+        <div class="notification-content">
+            <div class="notification-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="notification-text">
+                <h4>Success!</h4>
+                <p id="notificationMessage">Video uploaded successfully</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content small">
+            <h3>Confirm Action</h3>
+            <p id="confirmMessage">Are you sure you want to perform this action?</p>
+            <div class="modal-actions">
+                <button id="confirmCancel" class="btn-secondary">Cancel</button>
+                <button id="confirmAction" class="btn-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="content_creator-dashboard.js"></script>
+</body>
+</html>

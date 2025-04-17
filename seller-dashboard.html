@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard | Miraaki</title>
+    <link rel="stylesheet" href="seller-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <button class="hamburger"><i class="fas fa-bars"></i></button>
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="brand">Miraaki</div>
+              </a>
+              
+        </div>
+        <div class="profile-info">
+            <img src="https://ui-avatars.com/api/?name=Seller+Name&background=008080&color=fff" alt="Profile" class="profile-photo">
+            <span class="profile-name">Seller Name</span>
+            <span class="profile-badge">Seller</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" data-section="overview"><i class="fas fa-chart-line"></i> <span>Overview</span></a></li>
+            <li><a href="#" class="nav-link" data-section="inventory"><i class="fas fa-boxes"></i> <span>Inventory</span></a></li>
+            <li><a href="#" class="nav-link" data-section="orders"><i class="fas fa-receipt"></i> <span>Orders</span></a></li>
+            <li><a href="#" class="nav-link" data-section="earnings"><i class="fas fa-money-bill-wave"></i> <span>Earnings</span></a></li>
+            <li><a href="#" class="nav-link" data-section="settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#" class="nav-link" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+        <div class="dashboard-header">
+            <div class="header-left">
+                <h1>Seller Dashboard</h1>
+                <div class="breadcrumb">Overview</div>
+            </div>
+            <div class="header-right">
+                <div class="user-actions">
+                    <button class="btn-notification"><i class="fas fa-bell"></i></button>
+                    <select id="roleSwitch" class="filter-select">
+                        <option value="buyer">Buyer</option>
+                        <option value="seller" selected>Seller</option>
+                        <option value="content_creator">Content Creator</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="welcome-card">
+                    <div class="welcome-text">
+                        <h2>Welcome back, <span>Seller</span>!</h2>
+                        <p>Manage your products, track orders, and view earnings all in one place.</p>
+                        <div class="welcome-actions">
+                            <button class="btn-primary" id="addItemBtn"><i class="fas fa-plus"></i> Add Product</button>
+                            <button class="btn-secondary"><i class="fas fa-chart-pie"></i> View Analytics</button>
+                        </div>
+                    </div>
+                    <div class="welcome-animation" >
+                        
+                        <video id="welcomeani" autoplay muted loop>
+                            <source src="/images/selling.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                          
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_5tkzkblw.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalSales">0</h3>
+                            <p>Total Sales</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <video id="revenue"autoplay muted loop>
+                                <source src="/images/revenue.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                              </video>
+                              
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalRevenue">$0.00</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_80n1m4wd.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="activeProducts">0</h3>
+                            <p>Active Products</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inventory Section -->
+            <section id="inventory" class="section">
+                <div class="section-header">
+                    <h2>Inventory Management</h2>
+                    <div class="section-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search products...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <button class="btn-primary" id="addItemBtn"><i class="fas fa-plus"></i> Add Product</button>
+                    </div>
+                </div>
+                <div id="inventoryList" class="inventory-grid">
+                    <!-- Inventory items will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="section">
+                <div class="section-header">
+                    <h2>Recent Orders</h2>
+                    <div class="section-actions">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search orders...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                        <select class="filter-select">
+                            <option>All Status</option>
+                            <option>Pending</option>
+                            <option>Completed</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="ordersList" class="orders-table">
+                    <!-- Orders will be dynamically populated here -->
+                </div>
+            </section>
+
+            <!-- Earnings Section -->
+            <section id="earnings" class="section">
+                <div class="section-header">
+                    <h2>Earnings</h2>
+                    <div class="section-actions">
+                        <select class="filter-select">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 90 Days</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="earnings-chart">
+                    <div class="chart-placeholder">
+                        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_oi9s1b6n.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+                        <p>Your earnings data will appear here</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                </div>
+                <div class="settings-content">
+                    <p>Seller account settings and preferences</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div id="addItemModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-animation">
+                <video id="addproduct" autoplay muted loop >
+                    <source src="/images/add product.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                  
+            </div>
+            <h2>Add New Product</h2>
+            <form id="addItemForm">
+                <div class="form-group">
+                    <label for="itemName">Product Name</label>
+                    <input type="text" id="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemPrice">Price ($)</label>
+                    <input type="number" id="itemPrice" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemStock">Stock Quantity</label>
+                    <input type="number" id="itemStock" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemCategory">Category</label>
+                    <select id="itemCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home & Garden</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="itemDescription">Description</label>
+                    <textarea id="itemDescription" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Add Product</button>
+                    <button type="button" class="btn-secondary" id="cancelAddItem">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="seller-dashboard.js"></script>
+</body>
+</html>
